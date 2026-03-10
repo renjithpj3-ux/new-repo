@@ -1,0 +1,14 @@
+package.json
+
+{
+  "name": "jenkins-node-demo",
+  "version": "1.0.0",
+  "description": "Node.js CI/CD Demo with Jenkins",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
