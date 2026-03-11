@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'hexine', url: 'git@github.com:renjithpj3-ux/new-repo.git'
+            }
+        }
+
+        stage('Show Files') {
+            steps {
+                sh 'ls -la'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                sh 'npm start &'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh 'cp -r * /home/ubuntu/new-repo'
+            }
+        }
+            
+        stage('Pipeline Completed') {
+            steps {
+                echo 'CI/CD pipeline executed successfully!'
+            }
+        }
+
+    }
+}
