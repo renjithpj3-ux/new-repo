@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 app.get("/", (req, res) => {
-  res.send("Hello renjith! CI/CD Pipeline Deployed This App version 2🚀");
+  res.send("Hello renjith! CI/CD Pipeline Deployed This App version 5🚀");
 });
 
 app.get("/version", (req, res) => {
