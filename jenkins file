@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'hexine', url: 'git@github.com:renjithpj3-ux/new-repo.git'
+                git branch: 'main', url: 'git@github.com:renjithpj3-ux/new-repo.git'
             }
         }
 
