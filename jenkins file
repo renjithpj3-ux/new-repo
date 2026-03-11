@@ -5,6 +5,7 @@ pipeline {
 
   stage('Checkout Code') {
    steps {
+    deleteDir()
     git branch: 'main', url: 'git@github.com:renjithpj3-ux/new-repo.git'
    }
   }
@@ -17,7 +18,7 @@ pipeline {
 
   stage('Deploy') {
    steps {
-    sh 'cp -r . /home/ubuntu/new-repo'
+    sh 'rsync -av --delete ./ /home/ubuntu/new-repo/'
    }
   }
 
