@@ -27,7 +27,7 @@ pipeline {
     sh '''
     pkill node || true
     cd /home/ubuntu/new-repo
-    npm start &
+    nohup npm start > app.log 2>&1 &
     '''
    }
   }
