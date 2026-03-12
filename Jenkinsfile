@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 sh """
-                scp -o StrictHostKeyChecking=no -r * ${EC2_USER}@${EC2_HOST}:${APP_DIR}
+                scp -o StrictHostKeyChecking=no -r . ${EC2_USER}@${EC2_HOST}:${APP_DIR}
                 """
             }
         }
