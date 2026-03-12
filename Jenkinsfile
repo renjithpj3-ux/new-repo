@@ -21,13 +21,12 @@ steps {
 sh 'rsync -av --delete./ /home/ubuntu/new-repo/'
 }
 }
-sh 'sudo cp * 
-  stage('Run Application') {
-   steps {
-    sh '''
-pkill node || true
-nohup npm start > app.log 2>&1 &
-'''
+stage('Restart application'){ 
+steps {
+ sh '''
+ pkill node || true
+ nohup npm start > app.log 2>&1 &
+ '''
    }
   }
 
