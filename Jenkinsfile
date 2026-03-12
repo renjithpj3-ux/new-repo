@@ -8,7 +8,7 @@ pipeline {
     environment {
         EC2_HOST = "3.6.132.160"
         EC2_USER = "ubuntu"
-        APP_DIR = "/home/ubuntu/nodeapp"
+        APP_DIR = "/home/ubuntu/new-repo"
     }
 
     stages {
@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 sh """
-                scp -o StrictHostKeyChecking=no -r . ${EC2_USER}@${EC2_HOST}:${APP_DIR}
+                scp -o StrictHostKeyChecking=no -r * ${EC2_USER}@${EC2_HOST}:${APP_DIR}
                 """
             }
         }
