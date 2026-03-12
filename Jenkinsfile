@@ -1,34 +1,49 @@
 pipeline {
- agent any
+    agent any
 
- stages {
+    tools {
+        nodejs "Node18"
+    }
 
-  stage('Checkout Code') {
-   steps {
-    deleteDir()
-    git branch: 'main', url: 'git@github.com:renjithpj3-ux/new-repo.git'
-   }
-  }
+    environment {
+        EC2_HOST = "172.31.1.241"
+        EC2_USER = "ubuntu"
+        APP_DIR = "/home/ubuntu/nodeapp"
+    }
 
-  stage('Install Dependencies') {
-   steps {
-    sh 'npm install'
-   }
-  }
+    stages {
 
-stage('deploy'){
-steps {
-sh 'rsync -av --delete ./ /home/ubuntu/new-repo/new-repo'
-}
-}
-stage('Restart application'){ 
-steps {
- sh '''
- pkill node || true
- nohup npm start > app.log 2>&1 &
- '''
-   }
-  }
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'git@github.com:renjithpj3-ux/new-repo.git'
+            }
+        }
 
- }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Deploy to EC2') {
+            steps {
+                sh """
+                scp -o StrictHostKeyChecking=no -r * ${EC2_USER}@${EC2_HOST}:${APP_DIR}
+                """
+            }
+        }
+
+        stage('Restart Application') {
+            steps {
+                sh """
+                ssh ${EC2_USER}@${EC2_HOST} '
+                cd ${APP_DIR}
+                npm install
+                pm2 delete nodeapp || true
+                pm2 start app.js --name nodeapp
+                '
+                """
+            }
+        }
+    }
 }
