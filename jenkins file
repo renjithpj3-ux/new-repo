@@ -18,7 +18,10 @@ pipeline {
 
   stage('Run Application') {
    steps {
-    sh 'npm start &'
+    sh '''
+pkill node || true
+nohup npm start > app.log 2>&1 &
+'''
    }
   }
 
