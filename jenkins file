@@ -16,12 +16,6 @@ pipeline {
    }
   }
 
-  stage('Deploy') {
-   steps {
-    sh 'rsync -av --delete ./ /home/ubuntu/new-repo/'
-   }
-  }
-
   stage('Run Application') {
    steps {
     sh '''
