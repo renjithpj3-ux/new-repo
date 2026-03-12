@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        EC2_HOST = "172.31.1.241"
+        EC2_HOST = "3.6.132.160"
         EC2_USER = "ubuntu"
         APP_DIR = "/home/ubuntu/nodeapp"
     }
