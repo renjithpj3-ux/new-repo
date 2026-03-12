@@ -8,7 +8,7 @@ pipeline {
     environment {
         EC2_HOST = "3.6.132.160"
         EC2_USER = "ubuntu"
-        APP_DIR = "/home/ubuntu/new-nodeapp"
+        APP_DIR = "/home/ubuntu/new-repo"
     }
 
     stages {
