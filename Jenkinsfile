@@ -11,6 +11,7 @@ pipeline {
   APP_DIR  = "/home/ubuntu/new-repo"
  }
 
+ 
  stages {
 
   stage('Clone Repository') {
