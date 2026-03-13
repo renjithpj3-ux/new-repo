@@ -29,7 +29,7 @@ jobs:
           username: "ubuntu"
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "."
-          target: "/home/ubuntu/app"
+          target: "/home/ubuntu/new-repo"
 
       - name: Restart Application
         uses: appleboy/ssh-action@v1.0.3
