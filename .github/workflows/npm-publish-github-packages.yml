@@ -25,7 +25,7 @@ jobs:
       - name: Copy files via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: "3.4.132.160"
+          host: "3.6.132.160"
           username: "ubuntu"
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "."
