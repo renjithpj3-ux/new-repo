@@ -34,11 +34,11 @@ jobs:
       - name: Restart Application
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: "13.127.79.141"
+          host: "3.6.132.160"
           username: "ubuntu"
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ubuntu/app
+            cd /home/ubuntu/new-repo
             npm install
             pm2 delete nodeapp || true
             pm2 start app.js --name nodeapp
